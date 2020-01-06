@@ -11,6 +11,12 @@ const routes = [
     component: EventList
   },
   {
+    path: '/event/create',
+    name: 'event-create',
+    component: () =>
+      import(/* webpackChunkName: "event-create" */ '../views/EventCreate.vue')
+  },
+  {
     path: '/event/:id',
     name: 'event-show',
     props: true,
@@ -19,12 +25,6 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "event-show" */ '../views/EventShow.vue')
-  },
-  {
-    path: '/event/create',
-    name: 'event-create',
-    component: () =>
-      import(/* webpackChunkName: "event-create" */ '../views/EventCreate.vue')
   }
 ];
 
