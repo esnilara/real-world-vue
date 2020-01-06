@@ -8,7 +8,7 @@
 
 <script>
 import EventCard from '@/components/EventCard.vue';
-import axios from 'axios';
+import EventService from '@/services/EventService.js';
 
 export default {
   components: {
@@ -23,7 +23,7 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get('http://localhost:3000/events');
+      const response = await EventService.getEvents();
       this.events = response.data;
     } catch (error) {
       console.log(`There was an error: ${error.response}`);
