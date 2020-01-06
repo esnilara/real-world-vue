@@ -33,20 +33,24 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   props: ['id'],
 
   async created() {
     try {
-      await this.$store.dispatch('fetchEvent', this.id);
+      await this.fetchEvent(this.id);
     } catch (error) {
       console.log(`There was an error: ${error.response}`);
     }
   },
 
-  computed: mapState(['event'])
+  computed: mapState({
+    event: state => state.event.event
+  }),
+
+  methods: mapActions('event', ['fetchEvent'])
 };
 </script>
 
