@@ -78,9 +78,13 @@ export const actions = {
 
       if (event) {
         commit('SET_EVENT', event);
+
+        return event;
       } else {
         const response = await EventService.getEvent(id);
         commit('SET_EVENT', response.data);
+
+        return response.data;
       }
     } catch (error) {
       const notification = {
