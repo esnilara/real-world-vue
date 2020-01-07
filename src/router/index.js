@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import EventList from '@/views/EventList.vue';
 import NotFound from '@/views/NotFound.vue';
+import NetworkIssue from '@/views/NetworkIssue';
 import NProgress from 'nprogress';
 import store from '@/store/index.js';
 
@@ -35,7 +36,11 @@ const routes = [
         routeTo.params.event = event;
         next();
       } catch (error) {
-        next({ name: '404', params: { resource: 'event' } });
+        if (error.response && error.response.status == 404) {
+          next({ name: '404', params: { resource: 'event' } });
+        } else {
+          next({ name: 'network-issue' });
+        }
       }
     },
     // route level code-splitting
@@ -49,6 +54,11 @@ const routes = [
     name: '404',
     component: NotFound,
     props: true
+  },
+  {
+    path: '/network-issue',
+    name: 'network-issue',
+    component: NetworkIssue
   },
   {
     path: '*',
