@@ -13,34 +13,37 @@
       <h3>Name & describe your event</h3>
 
       <div class="field">
-        <label for="title">Title</label>
-        <input
-          id="title"
-          v-model="event.title"
+        <BaseInput
           type="text"
+          label="Title"
+          id="title"
           placeholder="Add an event title"
+          v-model="event.title"
+          class="field"
         />
       </div>
 
       <div class="field">
-        <label for="description">Description</label>
-        <input
-          id="description"
-          v-model="event.description"
+        <BaseInput
           type="text"
+          label="Description"
+          id="description"
           placeholder="Add a description"
+          v-model="event.description"
+          class="field"
         />
       </div>
 
       <h3>Where is your event?</h3>
 
       <div class="field">
-        <label for="location">Location</label>
-        <input
-          id="location"
-          v-model="event.location"
+        <BaseInput
           type="text"
+          label="Location"
+          id="location"
           placeholder="Add a location"
+          v-model="event.location"
+          class="field"
         />
       </div>
 
