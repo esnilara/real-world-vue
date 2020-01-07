@@ -1,4 +1,10 @@
 import EventService from '@/services/EventService.js';
+import {
+  ADD_EVENT,
+  SET_EVENTS,
+  SET_EVENTS_TOTAL,
+  SET_EVENT
+} from '@/store/mutation-types.js';
 
 export const namespaced = true;
 
@@ -10,19 +16,19 @@ export const state = {
 };
 
 export const mutations = {
-  ADD_EVENT(state, event) {
+  [ADD_EVENT](state, event) {
     state.events.push(event);
   },
 
-  SET_EVENTS(state, events) {
+  [SET_EVENTS](state, events) {
     state.events = events;
   },
 
-  SET_EVENTS_TOTAL(state, eventsTotal) {
+  [SET_EVENTS_TOTAL](state, eventsTotal) {
     state.eventsTotal = eventsTotal;
   },
 
-  SET_EVENT(state, event) {
+  [SET_EVENT](state, event) {
     state.event = event;
   }
 };

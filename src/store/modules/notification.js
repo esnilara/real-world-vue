@@ -1,3 +1,5 @@
+import { PUSH, DELETE } from '@/store/mutation-types.js';
+
 export const namespaced = true;
 
 export const state = {
@@ -7,14 +9,14 @@ export const state = {
 let nextId = 1;
 
 export const mutations = {
-  PUSH(state, notification) {
+  [PUSH](state, notification) {
     state.notifications.push({
       ...notification,
       id: nextId++
     });
   },
 
-  DELETE(state, notificationToRemove) {
+  [DELETE](state, notificationToRemove) {
     state.notifications = state.notifications.filter(
       notification => notification.id !== notificationToRemove.id
     );
