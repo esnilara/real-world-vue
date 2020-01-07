@@ -141,6 +141,20 @@
       "date": "2020-01-30T16:36:00.000Z",
       "time": "10:00",
       "attendees": []
+    },
+    {
+      "id": 7200715,
+      "category": "community",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Community Event",
+      "description": "This is the description",
+      "location": "Little Rock AR",
+      "date": "2020-01-31T19:47:00.000Z",
+      "time": "2:00",
+      "attendees": []
     }
   ]
 }
