@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import EventList from '@/views/EventList.vue';
+import NotFound from '@/views/NotFound.vue';
 import NProgress from 'nprogress';
 import store from '@/store/index.js';
 
@@ -25,15 +26,33 @@ const routes = [
     props: true,
 
     async beforeEnter(routeTo, routeFrom, next) {
-      const event = await store.dispatch('event/fetchEvent', routeTo.params.id);
-      routeTo.params.event = event;
-      next();
+      try {
+        const event = await store.dispatch(
+          'event/fetchEvent',
+          routeTo.params.id
+        );
+
+        routeTo.params.event = event;
+        next();
+      } catch (error) {
+        next({ name: '404', params: { resource: 'event' } });
+      }
     },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "event-show" */ '../views/EventShow.vue')
+  },
+  {
+    path: '/404',
+    name: '404',
+    component: NotFound,
+    props: true
+  },
+  {
+    path: '*',
+    redirect: { name: '404', params: { resource: 'page' } }
   }
 ];
 
