@@ -38,12 +38,8 @@ import { mapState, mapActions } from 'vuex';
 export default {
   props: ['id'],
 
-  async created() {
-    try {
-      await this.fetchEvent(this.id);
-    } catch (error) {
-      console.log(`There was an error: ${error.response}`);
-    }
+  created() {
+    this.fetchEvent(this.id);
   },
 
   computed: mapState({

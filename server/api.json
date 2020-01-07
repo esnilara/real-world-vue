@@ -113,6 +113,20 @@
       "date": "2020-01-30T20:24:00.000Z",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 4283806,
+      "category": "food",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Cheese Catering",
+      "description": "A cheese catering just for fun.",
+      "location": "Little Rock Arkansas",
+      "date": "2020-01-31T14:52:00.000Z",
+      "time": "5:00",
+      "attendees": []
     }
   ]
 }

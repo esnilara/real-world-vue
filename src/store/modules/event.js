@@ -28,26 +28,45 @@ export const mutations = {
 };
 
 export const actions = {
-  async createEvent({ commit }, event) {
+  async createEvent({ commit, dispatch }, event) {
     try {
       await EventService.postEvent(event);
       commit('ADD_EVENT', event);
+
+      const notification = {
+        type: 'success',
+        message: 'Your event has been created!'
+      };
+
+      dispatch('notification/add', notification, { root: true });
     } catch (error) {
+      const notification = {
+        type: 'error',
+        message: `There was a problem creating the event: ${error.message}`
+      };
+
+      dispatch('notification/add', notification, { root: true });
+
       throw error;
     }
   },
 
-  async fetchEvents({ commit, state }, { page }) {
+  async fetchEvents({ commit, state, dispatch }, { page }) {
     try {
       const response = await EventService.getEvents(state.perPage, page);
       commit('SET_EVENTS_TOTAL', parseInt(response.headers['x-total-count']));
       commit('SET_EVENTS', response.data);
     } catch (error) {
-      throw error;
+      const notification = {
+        type: 'error',
+        message: `There was a problem fetching events: ${error.message}`
+      };
+
+      dispatch('notification/add', notification, { root: true });
     }
   },
 
-  async fetchEvent({ commit, getters }, id) {
+  async fetchEvent({ commit, getters, dispatch }, id) {
     try {
       const event = getters.getEventById(id);
 
@@ -58,7 +77,12 @@ export const actions = {
         commit('SET_EVENT', response.data);
       }
     } catch (error) {
-      throw error;
+      const notification = {
+        type: 'error',
+        message: `There was a problem fetching event: ${error.message}`
+      };
+
+      dispatch('notification/add', notification, { root: true });
     }
   }
 };

@@ -100,9 +100,8 @@ export default {
         });
 
         this.event = this.createFreshEventObject();
-      } catch (error) {
-        console.log('There was a problem creating your event.');
-      }
+        // eslint-disable-next-line no-empty
+      } catch (error) {}
     },
 
     createFreshEventObject() {
