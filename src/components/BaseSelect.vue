@@ -20,26 +20,15 @@
 </template>
 
 <script>
+import { formFieldMixin } from '@/mixins/formFieldMixin.js';
+
 export default {
-  inheritAttrs: false,
+  mixins: [formFieldMixin],
 
   props: {
-    value: [String, Number],
-
-    label: {
-      type: String,
-      default: ''
-    },
-
     options: {
       type: Array,
       required: true
-    }
-  },
-
-  methods: {
-    updateValue(event) {
-      this.$emit('input', event.target.value);
     }
   }
 };
