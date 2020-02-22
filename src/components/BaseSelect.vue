@@ -5,11 +5,12 @@
     <select
       :value="value"
       v-bind="$attrs"
-      @input="updateValue"
+      @change="updateValue"
       v-on="$listeners"
     >
       <option
         v-for="option in options"
+        :value="option"
         :key="option"
         :selected="option === value"
       >
