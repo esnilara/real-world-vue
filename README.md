@@ -9,6 +9,10 @@ npm install
 ```
 npm run serve
 ```
+### Starts server on port 3000 with api endpoints
+```
+npm run api
+```
 
 ### Compiles and minifies for production
 ```
